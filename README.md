@@ -1,36 +1,64 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Setup Instructions
 
-## Getting Started
+1. Clone the repository
 
-First, run the development server:
+```bash
+git clone <repository-url>
+```
+
+2. Navigate to the project directory
+
+```bash
+cd <repository-name>
+```
+
+3. Install dependencies
+
+```bash
+npm install
+```
+
+4. Start the development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Open http://localhost:3000 in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Approach Taken
 
-## Learn More
+- Built the application using **Next.js App Router** and **TypeScript**.
+- Designed the UI using **Tailwind CSS** with a focus on responsive layouts for desktop and mobile devices.
+- Structured the application into reusable components, with each landing page section implemented independently.
+- Implemented smooth navigation between sections using anchor links.
+- Added a mock API endpoint for the enquiry form to demonstrate API integration as required by the assignment.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+# AI Usage Explanation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+AI tools (primarily ChatGPT) were used during development for:
 
-## Deploy on Vercel
+- Improving the responsiveness of components using Tailwind CSS.
+- Debugging React, TypeScript, and Next.js issues.
+- Getting guidance on component organization and reusable code structure.
+- Resolving layout and styling issues more efficiently.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All components, project structure, integration, testing, and final refinements were implemented and verified manually.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+# Improvements With More Time
+
+If given more time, I would:
+
+- Integrate the enquiry form with a production-ready database instead of a mock API.
+- Send confirmation emails to users after successful form submission.
+- Build complete **About** and **Blog** pages instead of placeholder navigation links.
+- Implement `IntersectionObserver` so the navigation bar automatically highlights the active section while scrolling.
+- Add proper client-side and server-side form validation with user-friendly error messages.
+- Enhance SEO with metadata, Open Graph tags, and structured data.
+- Add loading and success/error states for API requests.
