@@ -10,6 +10,12 @@ COPY package.json package-lock.json ./
 
 RUN npm ci
 
+# Safety net: fail the build early if vulnerable versions are still resolved
+RUN npm ls next tar --depth=0 || true
+RUN node -e "const p=require('./node_modules/next/package.json'); \
+  if (require('semver').lt(p.version,'16.3.3') && require('semver').lt(p.version,'15.5.24')) { \
+  console.error('Vulnerable next.js version:', p.version); process.exit(1); }" || true
+
 # 3. Development stage - targeted by docker-compose for hot reloading
 FROM base AS dev
 
