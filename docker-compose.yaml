@@ -1,0 +1,46 @@
+name: buga-app
+services:
+  postgres:
+    container_name: db
+    image: postgres:15.1-alpine
+    environment:
+      - POSTGRES_PASSWORD=password
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+    networks:
+      - buga-network
+  buga-app:
+    container_name: buga-app
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    image: buga-app:7
+    command: npm run dev -- --webpack
+    volumes:
+    - type: bind
+      source: .
+      target: /app
+    - type: volume
+      target: /app/node_modules
+    - type: volume
+      target: /app/.next
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgres://postgres:password@db:5432/postgres}
+      - WATCHPACK_POLLING=true
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+    restart: unless-stopped
+    networks:
+      - buga-network
+networks:
+  buga-network:
+    name: buga-network
+volumes:
+  pgdata:
+    name: pgdata
